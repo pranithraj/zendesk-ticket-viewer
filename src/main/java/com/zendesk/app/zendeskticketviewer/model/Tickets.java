@@ -2,6 +2,7 @@ package com.zendesk.app.zendeskticketviewer.model;
 
 import lombok.ToString;
 import lombok.Data;
+
 @ToString
 @Data
 public class Tickets {
@@ -11,7 +12,6 @@ public class Tickets {
     private String description;
     private String external_id;
     private String type;
-    //    private Via via;
     private Boolean allow_attachments;
     private String updated_at;
     private String problem_id;
@@ -41,7 +41,7 @@ public class Tickets {
             StringBuilder sb = new StringBuilder();
             sb.append("<ul>\n");
             for (Tickets cd : stuffs.getTickets()) {
-                sb.append("<li>Ticket with subject \"" + cd.getSubject() + "\" opened by \"" + cd.getId() + "\" \n");
+                sb.append("<li>" + cd.getStatus() + ": " + "Ticket with subject \"" + cd.getSubject() + "\" opened by \"" + cd.getId() + "\" \n");
                 sb.append("\n");
             }
             double paginationNumber = 25.0;
@@ -55,5 +55,4 @@ public class Tickets {
         }
         return "";
     }
-
 }
