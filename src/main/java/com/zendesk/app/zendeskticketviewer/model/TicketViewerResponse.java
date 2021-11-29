@@ -1,18 +1,17 @@
 package com.zendesk.app.zendeskticketviewer.model;
 
+import lombok.ToString;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@ToString
 @Data
-@NoArgsConstructor
 public class TicketViewerResponse {
 
     private String next_page;
+    private List<Tickets> tickets;
     private Long count;
-    private List<Groups> groups;
     private String previous_page;
-
 
 }
