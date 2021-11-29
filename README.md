@@ -7,4 +7,4 @@ Zendesk is a customer service tool that allows the creation and management of su
 * Go to this URL on your browser:
 _http://localhost:8080_
 * Click on the button "_Fetch my tickets!_".
-* Navigate across different pages by clicking on the page numbers displayed😊.
+* Navigate across different pages by clicking on the page numbers displayed.
