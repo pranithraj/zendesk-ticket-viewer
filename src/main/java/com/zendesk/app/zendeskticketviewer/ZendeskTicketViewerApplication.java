@@ -41,12 +41,12 @@ public class ZendeskTicketViewerApplication {
 
     @GetMapping("/tickets/view")
     public String viewTickets(@RequestParam(value = "page", required = false, defaultValue = "1") String page) {
-        CredentialsProvider provider = new BasicCredentialsProvider();
-        UsernamePasswordCredentials credentials
+        final CredentialsProvider provider = new BasicCredentialsProvider();
+        final UsernamePasswordCredentials credentials
                 = new UsernamePasswordCredentials(Objects.requireNonNull(getPropValues("username")), getPropValues("password"));
         provider.setCredentials(AuthScope.ANY, credentials);
 
-        CloseableHttpClient client = HttpClientBuilder.create()
+        final CloseableHttpClient client = HttpClientBuilder.create()
                 .setDefaultCredentialsProvider(provider)
                 .build();
         TicketViewerResponse viewerResponse = null;
@@ -59,13 +59,13 @@ public class ZendeskTicketViewerApplication {
         return Tickets.convertToHTML(viewerResponse);
     }
 
-    private TicketViewerResponse executeGetRequest(CloseableHttpClient client, String s) throws IOException {
-        HttpResponse response = client.execute(
+    private TicketViewerResponse executeGetRequest(final CloseableHttpClient client, final String s) throws IOException {
+        final HttpResponse response = client.execute(
                 new HttpGet(s));
-        String json_string = EntityUtils.toString(response.getEntity());
+        final String json_string = EntityUtils.toString(response.getEntity());
 
         // JSON to GSON conversion
-        Gson gson = new Gson();
+        final Gson gson = new Gson();
 
         // 1. JSON file to Java object
         return gson.fromJson(json_string, TicketViewerResponse.class);
